@@ -1,0 +1,99 @@
+body {
+	background-color:black;
+	font-family:Times New Roman;
+	margin: 0;
+}
+
+#container{
+width:960px;
+min-height:800px;
+height:auto;
+margin:0 auto;
+text-align:center;
+background: white;
+}
+
+#header{
+	height:134px;
+	border-style: double;
+	border-color: red;
+    border-width: 5px;
+	background: #FFFFFF;
+}
+
+#slogan
+{
+	width:420px; 
+	height:50px;
+	clear: both;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+
+#navigation{
+height:68px;
+/*border:1px solid black;*/
+}
+	#navigation ul{
+	width:915px;
+	height:65px;
+	margin:0px 4px 0px 0px;
+	color:#333;
+	font-weight:bold;
+	/*border:1px solid blue;*/
+	}
+	
+	#navigation ul li{
+	width:120px;
+	height:25px;
+	margin:8px 3px 2px 21px;
+	padding-top:1px;
+	list-style:none;
+	float:left;
+	background: 	#CD5C5C;
+	color:white;
+	/*border:1px solid green;*/
+	}
+	#navigation ul li a{
+	text-decoration:none;
+	
+	
+	}
+	#navigation ul li.active{
+	background: 	#1E90FF;
+	color:white;
+	
+	}
+	#navigation ul li.active a{
+	background: 	#1E90FF;
+	color:white;
+	
+	}
+	
+	#navigation ul li:hover{
+		background: 	#1E90FF;
+	color:white;
+
+	
+	}
+	
+	
+	
+#body{
+min-height:672px;
+height:auto;
+width: 960px;
+text-align: center;
+border: 1px solid black;
+
+}
+	
+#footer{
+
+height:60px;
+margin: 100px 100px 100px 100px;
+/*border: 5px solid black;*/
+padding: 1em;
+
+}
