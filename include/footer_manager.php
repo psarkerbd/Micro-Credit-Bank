@@ -22,17 +22,28 @@
 	<div class="w3-row-padding w3-border w3-black">
 		<div class="w3-row-padding w3-bar">
 
-		<div class="w3-row-padding w3-col w3-container m5 l5" style="font-family: sans-serif; color: green">  
-			<p class="w3-tiny w3-row-padding">Micro Credit Bank. ALL RIGHTS RESERVED</p>
-	  	</div>
+			<div class="w3-row w3-small">
+				
+				<a href="home.php" class="w3-bar-item w3-button">Home</a>
+				<a href="add_admin.php" class="w3-bar-item w3-button">Add admin</a>
+				<a href="customer_detail.php" class="w3-bar-item w3-button">Customer Details</a>
+				<a href="#" class="w3-bar-item w3-button">Loan Details</a>
+				<a href="customer_application.php" class="w3-bar-item w3-button">Customer Application</a>
+				<a href="loan_application.php" class="w3-bar-item w3-button">Loan Application</a>
+
+			</div>
+
+			<div class="w3-row-padding w3-col w3-container m5 l5" style="font-family: sans-serif; color: green">  
+				<p class="w3-tiny w3-row-padding">Micro Credit Bank. ALL RIGHTS RESERVED</p>
+		  	</div>
 
 
-		<div class="w3-row-padding w3-col w3-container m7 l7" style="font-family: sans-serif; color: white">  
-			<p class="w3-small w3-right" id="liveTime"></p>
-	  	</div>
+			<div class="w3-row-padding w3-col w3-container m7 l7" style="font-family: sans-serif; color: white">  
+				<p class="w3-small w3-right" id="liveTime"></p>
+		  	</div>
 
 
-		<h6 class="w3-panel w3-tiny" style="color: white; font-family: sans-serif;"> Web Design and Developed by: TNP</h6>	
+			<h6 class="w3-panel w3-tiny" style="color: white; font-family: sans-serif;"> Web Design and Developed by: TNP</h6>	
 	
 		</div>
 

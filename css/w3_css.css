@@ -229,3 +229,10 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-border-dark-grey,.w3-hover-border-dark-grey:hover,.w3-border-dark-gray,.w3-hover-border-dark-gray:hover{border-color:#616161!important}
 .w3-border-pale-red,.w3-hover-border-pale-red:hover{border-color:#ffe7e7!important}.w3-border-pale-green,.w3-hover-border-pale-green:hover{border-color:#e7ffe7!important}
 .w3-border-pale-yellow,.w3-hover-border-pale-yellow:hover{border-color:#ffffcc!important}.w3-border-pale-blue,.w3-hover-border-pale-blue:hover{border-color:#e7ffff!important}
+.w3-middle{ margin: 0 auto; }
+.w3-css-image-container{position: relative; width:50%; }
+.w3-css-image-image{opacity: 1; display: block; width:100%; height: auto; transition: .5s ease; backface-visibility: hidden;}
+.w3-css-image-middle{ transition: .5s ease; opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); text-align: center;}
+.w3-css-image-container:hover,.w3-css-image-image{opacity: 0.3;}
+.w3-css-image-container:hover,.w3-css-image-middle{opacity: 1;}
+.w3-css-image-text{ background-color: #4CAF50;color: white;font-size: 16px;padding: 16px 32px;}
