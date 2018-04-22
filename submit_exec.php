@@ -31,10 +31,11 @@
 			//echo var_dump($designation_id);
 
 			if($designation_id == "1") $designation = "Chairman";
-			else if($designation_id == "2") $designation = "Director";
-			else if($designation_id == "3") $designation = "Manager";
-			else if($designation_id == "4") $designation = "Administration";
-			else if($designation_id == "5") $designation = "Treasurer";
+			else if($designation_id == "2") $designation = "Manager";
+			else if($designation_id == "3") $designation = "Assistant Manager";
+			else if($designation_id == "4") $designation = "Area Manager";
+			else if($designation_id == "5") $designation = "Cash Officer";
+			else if($designation_id == "6") $designation = "Public Relationship Officer";
 
 			$contact = "+880".$contact;
 
@@ -51,16 +52,12 @@
 				$_SESSION['username'] = $username; 
 				$_SESSION['c_password'] = $c_password;
 				$_SESSION['name'] = $name;
+				//$_SESSION['designation'] = $designation;
 				session_write_close();
-				//echo "ok <br>";
+				echo "ok";
 
 	?>
 
-			<p class="w3-panel w3-green w3-text-large" style="margin-top: 25px; font-family: sans-serif;">
-				<?php 
-					echo $name . " became an Admin";
-				?>
-			</p>
 <?php
 
 			}
@@ -71,7 +68,7 @@
 				
 				<p class="w3-panel w3-red" style="margin-top: 25px; font-family: sans-serif;">
 					<?php 
-					echo "You are already an Admin";
+					echo "Username is already added as Admin";
 					?>
 				</p> 
 	 		

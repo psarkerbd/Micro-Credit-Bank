@@ -1,5 +1,31 @@
-<?php include("include/config.php"); ?>
-<?php include("include/header_admin.php"); ?>
+<?php include("include/config.php");
+	  
+	session_start(); 
+
+	$designation = $_SESSION['designation'];
+
+	if($_SESSION['designation'] == "Chairman")
+	{
+	  include("include/header_chairman.php");
+	}
+
+	else if($_SESSION['designation'] == "Manager")
+	{
+	  include("include/header_manager.php");
+	}
+
+	else if($_SESSION['designation'] == "Cash Officer")
+	{
+		include("include/header_cash_officer.php");
+	}
+
+	else
+	{
+	  include("include/header_admin.php");
+	}
+
+	session_write_close();
+?>
 
 <div class="w3-container w3-border" style="min-height:295px;height:auto;">
 	
@@ -164,9 +190,7 @@
 				
 	</div>
 
-</div>
-
-<script>
+	<script>
 
 	function myFunction() 
 	{
@@ -188,7 +212,7 @@
 		var email=document.getElementById('email').value;
 		var nid=document.getElementById('nid').value;
 
-		console.log(myDate);
+		//console.log(myDate);
 				
 		if(name!="" && f_name!="" && m_name!="" && contact!="" && gender!="" && permanent_address!="" && present_address!="" && myDate !="" && nid!="")
 		{
@@ -201,20 +225,22 @@
 				{
 						var msg=this.responseText.trim();
 						//var m=this.responseText.trim();
-						//console.log("."+msg+".");
+						console.log(msg);
+
 						if(msg=="ok") //logged in successfully
 						{
+							//console.log("if working");
+							//console.log("  log = ok");
 							document.getElementById('mmssgg').style.display='none';
 							document.getElementById('submit_btn').innerHTML='Submit';
-							document.getElementById('confirm_msg').style.display='block';
-							document.getElementById('confirm_msg').innerHTML= msg;
-							//console.log("Logged IN");
-							window.location.href = "home.php";
-							reset();
+								//console.log("Logged IN");
+							window.location.href = "customer_detail.php";
+							//reset();
 						}
 						
 						else
 						{
+							//console.log("else working");
 							document.getElementById('mmssgg').style.display='block';
 							document.getElementById('mmssgg').innerHTML=msg;
 							document.getElementById('submit_btn').innerHTML='Submit';
@@ -231,9 +257,39 @@
 }
 
 </script>
+
 <p class="w3-center w3-text-red" id="mmssgg" style="display:none;"></p>
 <p class="w3-center w3-green" id="confirm_msg" style="display: none"></p>
 
+</div>
 
 
-<?php include("include/footer.php") ?>
+
+<?php
+	  
+	//session_start(); 
+
+	$designation = $_SESSION['designation'];
+
+	if($_SESSION['designation'] == "Chairman")
+	{
+	  include("include/footer_chairman.php");
+	}
+
+	else if($_SESSION['designation'] == "Manager")
+	{
+	  include("include/footer_manager.php");
+	}
+
+	else if($_SESSION['designation'] == "Cash Officer")
+	{
+		include("include/footer_cash_officer.php");
+	}
+
+	else
+	{
+	  include("include/footer_admin.php");
+	}
+
+	session_write_close();
+?>

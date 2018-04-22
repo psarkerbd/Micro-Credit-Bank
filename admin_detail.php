@@ -1,5 +1,31 @@
-<?php include("include/header_admin.php");?>
-<?php include("include/config.php");?>
+<?php include("include/config.php");
+	  
+	session_start(); 
+
+	$designation = $_SESSION['designation'];
+
+	if($_SESSION['designation'] == "Chairman")
+	{
+	  include("include/header_chairman.php");
+	}
+
+	else if($_SESSION['designation'] == "Manager")
+	{
+	  include("include/header_manager.php");
+	}
+
+	else if($_SESSION['designation'] == "Cash Officer")
+	{
+		include("include/header_cash_officer.php");
+	}
+
+	else
+	{
+	  include("include/header_admin.php");
+	}
+
+	session_write_close();
+?>
 
 
 <?php 
@@ -17,7 +43,7 @@
 
 	<div class="w3-container" style="min-height:295px;height:auto;">
 		 
-		<table class="w3-table w3-container  w3-hoverable w3-bordered w3-middle w3-card-4" style="max-width:auto;width:100%;margin-top:50px; margin-bottom: 50px; font-family: Arial; ">
+		<table class="w3-table w3-container w3-hoverable w3-bordered w3-middle w3-card-4" style="max-width:auto;width:100%;margin-top:50px; margin-bottom: 50px; font-family: Arial; ">
 
 			<thead>
 				<tr class="w3-teal">
@@ -66,4 +92,31 @@
 </div>
 
 
-<?php include("include/footer.php");?>
+<?php
+	  
+	//session_start(); 
+
+	$designation = $_SESSION['designation'];
+
+	if($_SESSION['designation'] == "Chairman")
+	{
+	  include("include/footer_chairman.php");
+	}
+
+	else if($_SESSION['designation'] == "Manager")
+	{
+	  include("include/footer_manager.php");
+	}
+
+	else if($_SESSION['designation'] == "Cash Officer")
+	{
+		include("include/footer_cash_officer.php");
+	}
+
+	else
+	{
+	  include("include/footer_admin.php");
+	}
+
+	session_write_close();
+?>

@@ -19,7 +19,7 @@
 			<!-- <h2 class="w3-large" style="font-family: sans-serif; ">Only for Board of Director members</h2> -->
 
 			<marquee scrollamount="1" scrolldelay="1" behavior="ALTERNATE" width="100%" style="font-weight: normal; font-family: sans-serif; color: red; font-size: 20px">  
-				Only for Board of Director members 
+				Only for Bank members 
 			</marquee>
 
 		</div>
@@ -70,7 +70,7 @@
 
 			</form>
 			
-			<script>
+<script>
 			
 			function get_login()
 			{
@@ -106,7 +106,7 @@
 				}
 			}
 			
-			</script>
+</script>
 			<p class="w3-center w3-text-red" id="mmssgg" style="display:none;"></p>
 		</div>
 	</div>

@@ -1,5 +1,31 @@
-<?php include("include/header_admin.php"); ?>
-<?php include("include/config.php"); ?>
+<?php include("include/config.php");
+	  
+	session_start(); 
+
+	$designation = $_SESSION['designation'];
+
+	if($_SESSION['designation'] == "Chairman")
+	{
+	  include("include/header_chairman.php");
+	}
+
+	else if($_SESSION['designation'] == "Manager")
+	{
+	  include("include/header_manager.php");
+	}
+
+	else if($_SESSION['designation'] == "Cash Officer")
+	{
+		include("include/header_cash_officer.php");
+	}
+
+	else
+	{
+	  include("include/header_admin.php");
+	}
+
+	session_write_close();
+?>
 
 
 <div class="w3-container w3-border" style="min-height:295px;height:auto;">
@@ -175,4 +201,31 @@
 <p class="w3-center w3-green" id="confirm_msg" style="display: none"></p>
 
 
-<?php include("include/footer.php"); ?>
+<?php
+	  
+	//session_start(); 
+
+	$designation = $_SESSION['designation'];
+
+	if($_SESSION['designation'] == "Chairman")
+	{
+	  include("include/footer_chairman.php");
+	}
+
+	else if($_SESSION['designation'] == "Manager")
+	{
+	  include("include/footer_manager.php");
+	}
+
+	else if($_SESSION['designation'] == "Cash Officer")
+	{
+		include("include/footer_cash_officer.php");
+	}
+
+	else
+	{
+	  include("include/footer_admin.php");
+	}
+
+	session_write_close();
+?>

@@ -19,7 +19,7 @@
 		//echo $name. " " . $gender_id;
 
 		if($gender_id == 0)
-		{ 
+		{
 	?>
 
 			<p class="w3-panel w3-red" style="margin-top: 25px; font-family: sans-serif;">
@@ -55,36 +55,12 @@
 				//$_SESSION['c_password'] = $c_password;
 				//$_SESSION['name'] = $name;
 				session_write_close();
-				echo "ok <br>";
-
-	?>
-
-			<p class="w3-panel w3-container w3-green w3-text-large" style="margin-top: 25px; font-family: Arial;">
-				<?php 
-					
-					$cnt = $cnt+1;
-
-					$qry = "INSERT INTO request (request_id, national_id) VALUES ('$cnt', '$nid')";
-					$result = mysql_query($qry);
-
-					if($result)
-					{
-						echo "Customer request is going to the Admin panel";
-						echo "ok";
-					}
-
-					else
-					{
-						echo "Already added";
-					}
-				?>
-			</p>
-<?php
-
+				echo "ok";
+				//echo "Customer information is added";
 			}
 
 			else
-			{ 
+			{
 				?>
 				
 				<p class="w3-center w3-text-white w3-red w3-text-large" style="margin-top: 25px; font-family: Arial;">
