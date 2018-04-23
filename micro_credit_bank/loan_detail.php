@@ -8,7 +8,7 @@
 	include("include/config.php");
 	
 	//echo "loan detail page";
-	
+	$a=100;
 	$sql = "SELECT * FROM loan_category";
 	$result = mysql_query($sql);
 	if($result)
@@ -22,6 +22,9 @@
 						<tr class="w3-teal">
 							<th> Id no </th>
 							<th> Loan Title </th>
+							<th> Loan Amount </th>
+							<th> Interest </th>
+							<th> Total Paid </th>
 							<th> Delete </th>
 						</tr>
 					</thead>
@@ -34,7 +37,13 @@
 					<tr>
 						<td> <?php echo $row['category_id']; ?> </td>
 						<td> <?php echo $row['loan_type']; ?> </td>
-						<td> <a href="loan_delete.php?id=<?php echo $row['category_id']; ?>"> <button class="w3-button w3-black" onclick="remove_note()">Yes</button></a> </td>
+						<td> <?php echo $row['loan_amount']; ?> </td>
+						<td> <?php echo $row['interest']; ?> </td>
+						<td> <?php echo $row['total_paid'] ?> </td>
+						
+			
+
+						<td> <a href="loan_detail_exec.php?id=<?php echo $row['category_id']; ?>"> <button class="w3-button w3-black" onclick="remove_note()">Yes</button></a> </td>
 					</tr>
 		<?php			
 			} 

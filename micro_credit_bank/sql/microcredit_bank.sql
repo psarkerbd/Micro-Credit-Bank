@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2018 at 06:34 AM
+-- Generation Time: Apr 22, 2018 at 01:12 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -112,20 +112,20 @@ CREATE TABLE IF NOT EXISTS `loan_category` (
   `loan_type` varchar(255) NOT NULL,
   `loan_amount` int(11) NOT NULL,
   `total_paid` int(11) NOT NULL,
-  `validity` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `validity` varchar(255) NOT NULL,
+  `interest` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `loan_category`
 --
 
-INSERT INTO `loan_category` (`category_id`, `loan_type`, `loan_amount`, `total_paid`, `validity`) VALUES
-(1, 'Crop production one', 10000, 12000, '1 year'),
-(2, 'Crop production two', 13000, 15000, '1 year'),
-(3, 'Crop production three', 16000, 20000, '1 year'),
-(4, 'Fish culture', 20000, 25000, '1 year'),
-(5, 'Fish culture one', 5000, 7000, '1 year'),
-(6, 'Fish culture two', 7500, 10000, '1 year');
+INSERT INTO `loan_category` (`category_id`, `loan_type`, `loan_amount`, `total_paid`, `validity`, `interest`) VALUES
+(1, 'Crop production one', 10000, 12000, '1', 5),
+(2, 'Crop production two', 13000, 15000, '1', 5),
+(4, 'Fish culture', 20000, 25000, '1', 0),
+(5, 'Fish culture one', 5000, 7000, '1', 0),
+(11, 'Fish Culture 2', 10000, 10500, '1', 5);
 
 -- --------------------------------------------------------
 
@@ -214,7 +214,7 @@ ALTER TABLE `request`
 -- AUTO_INCREMENT for table `loan_category`
 --
 ALTER TABLE `loan_category`
-MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `request`
 --

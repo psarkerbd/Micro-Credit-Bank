@@ -4,9 +4,12 @@
 
 <div class="w3-container" style="min-height:295px;height:auto;">
 		 
-		<div class="w3-cell-row w3-row-padding w3-right w3-margin-top">
-			<form class="w3-right w3-row-padding" method="post" action="<?php echo $_SERVER['PHP_SELF'];?> ">
-				<input style="width:72%;" type="text" name="loan_title" placeholder="Add a new loan...">
+		<div class="w3-cell-row w3-row-padding w3-right w3-margin-top w3-margin-bottom">
+			<form style="margin-left:100px;" class="w3-row-padding" method="post" action="<?php echo $_SERVER['PHP_SELF'];?> ">
+				<input style="width:20%;" type="text" name="loan_title" placeholder="Loan title...">
+				<input style="width:20%;" type="text" name="loan_amount" placeholder="Loan amount...">
+				<input style="width:20%;" type="text" name="loan_interest" placeholder="Loan interest...">
+				<input style="width:20%;" type="text" name="loan_validity" placeholder="validity...">
 				<input type="submit" value="Submit">
 			</form>
 		
@@ -26,7 +29,16 @@
 				
 			if(mysql_num_rows($result) <= 0)
 			{
-				$qry = "INSERT INTO loan_category (loan_type) VALUES ('$loan_title')";
+				$loan_title = $_REQUEST['loan_title'];
+				$loan_amount = $_REQUEST['loan_amount'];
+				$loan_interest = $_REQUEST['loan_interest'];
+				$loan_validity = $_REQUEST['loan_validity'];
+				
+				$loan_validity_up = $loan_validity + " year";
+				
+				$total_paid = $loan_amount + ($loan_amount / 100) * $loan_interest;
+				
+				$qry = "INSERT INTO loan_category (loan_type, loan_amount, total_paid, validity, interest) VALUES ('$loan_title' , '$loan_amount' , '$total_paid', '$loan_validity_up', '$loan_interest' ) ";
 				$result = mysql_query($qry);
 				//echo var_dump($result);
 				$sql = "SELECT * FROM loan_category";
@@ -66,14 +78,14 @@
 				}
 			}
 				
-				else
-				{ ?>
+			else
+			{ ?>
 			
-					<div class="w3-row-padding w3-cell-row" style="font-family: Arial; text-align:center;">
+				<div class="w3-row-padding w3-cell-row" style="font-family: Arial; text-align:center;">
 						
-						<p class="w3-panel w3-red"> Loan title is already added </p>
+					<p class="w3-panel w3-red"> Loan title is already added </p>
 					
-					</div>
+				</div>
 			<?php
 			
 					$sql = "SELECT * FROM loan_category";
@@ -110,7 +122,7 @@
 					<?php		
 						}
 					}
-				}
+			}
 		}
 	}
 ?>

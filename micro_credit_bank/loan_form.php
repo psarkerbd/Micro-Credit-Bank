@@ -1,6 +1,23 @@
 <?php include("include/config.php"); ?>
 <?php include("include/header_demand.php"); ?>
 
+<?php
+
+	//session_start();
+	if(isset($_REQUEST['customer_nid']))
+	{
+		$customer_nid = $_REQUEST['customer_nid'];
+		$pre = $_REQUEST['customer_nid'];
+	}
+	
+	else
+	{
+		$customer_nid = "";
+	}
+
+?>
+
+
 <div class="w3-container w3-border" style="min-height:295px;height:auto;">
 	
 	<div class="w3-container w3-middle w3-border w3-card-4" style="max-width:600px;width:100%;margin-top:20px;margin-bottom: 20px;background-color: #d9d9d9; color: black; font-family: sans-serif;text-align: center;">
@@ -13,10 +30,11 @@
 					<label for="fname">NID: </label>
 				</div>
 				
-				<div class="w3-col w3-left-align"  style="width:70%;">
-					<input class="w3-input w3-border" method = "post" type="text" id="nid" placeholder="NID..." required/>
+				<div class="w3-green w3-col w3-left-align" style="width:70%; position: relative;">
+					<input class="w3-input w3-border" method = "post" type="text" id="nid" style="border: 2px solid red; padding-left: 50px;"/>
+					<label style="position:absolute; left:10px; top:9px; color:black"> <?php echo $customer_nid; ?> </label>
 				</div>
-			
+				
 			</div>
 
 			<div class="w3-row w3-margin-top" style="max-width:600px;width:100%;">
@@ -28,61 +46,36 @@
 				<div class="w3-col w3-left-align w3-dropdown-hover"  style="width:70%;">
 					<!--<input class="w3-input w3-border" method = "post" type="text" id="designation" placeholder="Employee designation..." required/> -->
 					<select class="w3-input w3-border" id="loan_type">
+						
 						<?php 
-
-							for ($i=0; $i<5; $i++)
+							
+							$sql = "SELECT * FROM loan_category";
+							$result = mysql_query($sql);
+							if($result)
 							{
-	
-							    if($i==0) $str = "Type";
-							    else if($i==1) $str="Krishi";
-							    else if($i==2) $str="Fishery";
-							    else if($i==3) $str="Farm";
-							    else if($i==4) $str="Handcraft";
+								$cnt_table = mysql_num_rows($result);
+							?>
+								
+							<option value="<?php echo 0; ?>" > <?php echo "Select"; ?> </option>
+								
+					<?php		if($cnt_table > 0)
+								{
+									while($row = mysql_fetch_assoc($result))
+									{?>
+										<option value="<?php echo $row['category_id']; ?>" > <?php echo $row['loan_type']; ?> </option>
+							<?php			
+									}
+								}
+							}
+							
 
 							?>
-							 <option value="<?php echo $i; ?>" > <?php echo $str; ?> </option>
 							  
-						<?php
-
-							} 
-						?>
 					</select>
 				</div>
 			
 			</div>
 			
-			<div class="w3-row w3-margin-top" style="max-width:600px;width:100%;">
-						<!-- start username -->
-				<div class="w3-col w3-right-align w3-padding"  style="width:30%;">
-					<label for="fname">Interest Rate: </label>
-				</div>
-				
-				<div class="w3-col w3-left-align w3-dropdown-hover"  style="width:70%;">
-					<!--<input class="w3-input w3-border" method = "post" type="text" id="designation" placeholder="Employee designation..." required/> -->
-					<select class="w3-input w3-border" id="interest_rate">
-						<?php 
-
-							for ($i=0; $i<5; $i++)
-							{
-	
-							    if($i==0) $str = "Rate";
-							    else if($i==1) $str=4;
-							    else if($i==2) $str=5;
-							    else if($i==3) $str=8;
-							    else if($i==4) $str=10;
-
-							?>
-							 <option value="<?php echo $i; ?>" > <?php echo $str; ?> </option>
-							  
-						<?php
-
-							} 
-						?>
-					</select>
-				</div>
-			
-			</div>
-
 			<div class="w3-row w3-margin-top" style="max-width:600px;width:100%;">
 						<!-- start username -->
 				<div class="w3-col w3-right-align w3-padding"  style="width:30%;">
@@ -137,18 +130,22 @@
 		</form>
 		
 <script>
+
+	function myFunction() 
+	{
+	    document.getElementById("myDate").value = "";
+	}
 			
 	function get_submit()
 	{
 		var national_id   = document.getElementById('nid').value;
 		var loan_type     = document.getElementById('loan_type').value;
-		var interest_rate = document.getElementById('interest_rate').value;
 		var loan_date     = document.getElementById('myDate').value;
 		var loan_status   = document.getElementById('loan_status').value;
 		
 		//console.log(national_id);
 				
-		if(national_id!="" && loan_type!="" && interest_rate!= "" && loan_date!="" && loan_status!="")
+		if(national_id!="" && loan_type!="" && loan_date!="" && loan_status!="")
 		{
 			document.getElementById('submit_btn').innerHTML='Submitting...';
 					
@@ -175,8 +172,7 @@
 				}
 			};
 		
-			xhttp.open("GET", "loan_form_exec.php?nid="+national_id+"&loan_type="+loan_type+"&interest_rate="+interest_rate
-			+"&loan_date="+loan_date+"&loan_status="+loan_status, true);
+			xhttp.open("GET", "loan_form_exec.php?nid="+national_id+"&loan_type="+loan_type+"&loan_date="+loan_date+"&loan_status="+loan_status, true);
 			xhttp.send(); 
 		}
 	}

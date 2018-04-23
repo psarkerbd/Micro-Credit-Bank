@@ -44,7 +44,8 @@
 						//document.getElementById('mmssgg').style.display='none';
 						//document.getElementById('search_btn').innerHTML='Search';
 						//console.log("Logged IN");
-						window.location.href = "loan_form.php";
+						
+						window.location.href = "loan_form.php?customer_nid="+customer_nid;
 					}
 					else
 					{

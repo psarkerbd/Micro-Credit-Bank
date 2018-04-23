@@ -4,16 +4,42 @@
 	
 	$national_id   = $_REQUEST['nid'];
 	$loan_type_id  = $_REQUEST['loan_type'];
-	$interest_rate_id = $_REQUEST['interest_rate'];
-	$loan_date     = $_REQUEST['loan_date'];
+	$loan_date   = $_REQUEST['loan_date'];
 	$loan_status_id   = $_REQUEST['loan_status'];
 	
-	if($loan_type_id > 0 && $interest_rate_id > 0 && $loan_status_id > 0)
+	$sql = "SELECT * FROM loan";
+	$result = mysql_query($sql);
+	if($result)
 	{
-		if($loan_type_id == 1) $loan_type = "Krishi";
-		else if($loan_type_id == 2) $loan_type = "Fishery";
-		else if($loan_type_id == 3) $loan_type = "Farm";
-		else if($loan_type_id == 4) $loan_type = "Handcraft";
+		if(mysql_num_rows($result) > 0)
+		{
+			$bry = array();
+			$bry = mysql_fetch_assoc($result);
+			$loan_id = $bry['loan_id'] + 1;
+		}
+		
+		else
+		{
+			$loan_id = 1;
+		}
+	}
+	
+	if($loan_type_id > 0 && $loan_status_id > 0)
+	{
+		$sql = "SELECT * FROM loan_category WHERE category_id = '$loan_type_id'";
+		$result = mysql_query($sql);
+		
+		if($result)
+		{
+			$cnt_table = mysql_num_rows($result);
+			
+			if($cnt_table > 0)
+			{
+				ary = array();
+				ary = mysql_fetch_assoc($result);
+				$loan_type = ary['loan_type'];
+			}
+		}
 		
 		$sql = "SELECT * FROM loan_category WHERE loan_type = '$loan_type' ";
 		$result = mysql_query($sql);
@@ -28,16 +54,11 @@
 			//echo "hello - " . $category_id;
 		}
 		
-		if($interest_rate_id == 1) $interest_rate = 4;
-		else if($interest_rate_id == 2) $interest_rate = 5;
-		else if($interest_rate_id == 3) $interest_rate = 8;
-		else if($interest_rate_id == 4) $interest_rate = 10;
-		
 		if($loan_status_id == 1) $loan_status = "Running";
 		else if($loan_status_id == 2) $loan_status = "Close";
 		
-		$qry = "INSERT INTO loan(national_id, category_id, interest_rate, taken_date, status)
-		VALUES ('$national_id', '$category_id', '$interest_rate', '$loan_date' , '$loan_status') ";
+		$qry = "INSERT INTO loan(loan_id, national_id, category_id, taken_date, status)
+		VALUES ('$loan_id', '$national_id', '$category_id', '$loan_date' , '$loan_status') ";
 		$result = mysql_query($qry);
 		if($result)
 		{
