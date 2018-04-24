@@ -3,11 +3,14 @@
 
 <?php
 
-	//session_start();
+	session_start();
+	$flag = 0;
 	if(isset($_REQUEST['customer_nid']))
 	{
 		$customer_nid = $_REQUEST['customer_nid'];
 		$pre = $_REQUEST['customer_nid'];
+		$flag = 1;
+		$_SESSION['customer_nid'] = $customer_nid;
 	}
 	
 	else
@@ -22,7 +25,7 @@
 	
 	<div class="w3-container w3-middle w3-border w3-card-4" style="max-width:600px;width:100%;margin-top:20px;margin-bottom: 20px;background-color: #d9d9d9; color: black; font-family: sans-serif;text-align: center;">
 
-		<form action="#">
+		
 			
 			<div class="w3-row w3-margin-top" style="max-width:600px;width:100%;">
 						<!-- start username -->
@@ -31,8 +34,7 @@
 				</div>
 				
 				<div class="w3-green w3-col w3-left-align" style="width:70%; position: relative;">
-					<input class="w3-input w3-border" method = "post" type="text" id="nid" style="border: 2px solid red; padding-left: 50px;"/>
-					<label style="position:absolute; left:10px; top:9px; color:black"> <?php echo $customer_nid; ?> </label>
+					<input class="w3-input w3-border" type="text" id="nid" value="<?php echo $customer_nid; ?>" style="border: 2px solid red;" disabled/>
 				</div>
 				
 			</div>
@@ -45,7 +47,7 @@
 				
 				<div class="w3-col w3-left-align w3-dropdown-hover"  style="width:70%;">
 					<!--<input class="w3-input w3-border" method = "post" type="text" id="designation" placeholder="Employee designation..." required/> -->
-					<select class="w3-input w3-border" id="loan_type">
+					<select class="w3-input w3-border" id="loan_type" required>
 						
 						<?php 
 							
@@ -54,9 +56,10 @@
 							if($result)
 							{
 								$cnt_table = mysql_num_rows($result);
+								echo "cnt_table = " . $cnt_table;
 							?>
 								
-							<option value="<?php echo 0; ?>" > <?php echo "Select"; ?> </option>
+							<option value="" > <?php echo "Select"; ?> </option>
 								
 					<?php		if($cnt_table > 0)
 								{
@@ -97,14 +100,16 @@
 				
 				<div class="w3-col w3-left-align w3-dropdown-hover"  style="width:70%;">
 					<!--<input class="w3-input w3-border" method = "post" type="text" id="designation" placeholder="Employee designation..." required/> -->
-					<select class="w3-input w3-border" id="loan_status">
+					<select class="w3-input w3-border" id="loan_status" required>
+						
+						<option value="" > Status </option>
 						<?php 
 
-							for ($i=0; $i<3; $i++)
+							for ($i=1; $i<3; $i++)
 							{
 	
-							    if($i==0) $str = "Status";
-							    else if($i==1) $str="Running";
+							    
+							    if($i==1) $str="Running";
 							    else if($i==2) $str="Close";
 							?>
 							 <option value="<?php echo $i; ?>" > <?php echo $str; ?> </option>
@@ -121,13 +126,12 @@
 			<br/>
 					
 					
-					<!-- end password -->
+			<!-- end password -->
 
 			<div class="w3-row w3-margin-bottom" style="width:100%;max-width:600px;">
-				<button class="w3-button w3-green w3-round w3-right" id="submit_btn" onclick="get_submit()">Submit</button>
+				<button class="w3-button w3-green w3-round w3-right" id="submit_btn" onclick="get_submit()"> Submit </button>
 			</div>
 
-		</form>
 		
 <script>
 
@@ -144,9 +148,17 @@
 		var loan_status   = document.getElementById('loan_status').value;
 		
 		//console.log(national_id);
+		//console.log(loan_type);
+		//console.log(loan_date);
+		//console.log(loan_status);
 				
 		if(national_id!="" && loan_type!="" && loan_date!="" && loan_status!="")
 		{
+			//console.log(national_id);
+			//console.log(loan_type);
+			//console.log(loan_date);
+			//console.log(loan_status);
+			
 			document.getElementById('submit_btn').innerHTML='Submitting...';
 					
 			var xhttp = new XMLHttpRequest();
@@ -155,12 +167,13 @@
 				if (this.readyState == 4 && this.status == 200) 
 				{
 					var msg=this.responseText.trim();
-					console.log("."+msg+".");
+					//console.log("."+msg+".");
 					if(msg=="ok")
 					{
 						document.getElementById('mmssgg').style.display='none';
 						document.getElementById('submit_btn').innerHTML='Submit';
 						//console.log("Logged IN");
+						//console.log(this.responseText);
 						window.location.href = "customer_loan_detail.php";
 					}
 					else
@@ -174,6 +187,11 @@
 		
 			xhttp.open("GET", "loan_form_exec.php?nid="+national_id+"&loan_type="+loan_type+"&loan_date="+loan_date+"&loan_status="+loan_status, true);
 			xhttp.send(); 
+		}
+		
+		else
+		{
+			window.alert("Please fill up the form correctly");
 		}
 	}
 			

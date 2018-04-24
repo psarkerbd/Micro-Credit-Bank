@@ -2,7 +2,19 @@
 	
 	include('include/config.php');
 	
-	$national_id   = $_REQUEST['nid'];
+	if(isset($_SESSION['customer_nid']))
+	{
+		$national_id   = $_SESSION['customer_nid'];
+	}
+	
+	else
+	{
+		$national_id   = $_REQUEST['nid'];
+	}
+	
+	//echo "php -- loan form exec = " . $national_id;
+	
+	
 	$loan_type_id  = $_REQUEST['loan_type'];
 	$loan_date   = $_REQUEST['loan_date'];
 	$loan_status_id   = $_REQUEST['loan_status'];
@@ -35,9 +47,9 @@
 			
 			if($cnt_table > 0)
 			{
-				ary = array();
-				ary = mysql_fetch_assoc($result);
-				$loan_type = ary['loan_type'];
+				$ary = array();
+				$ary = mysql_fetch_assoc($result);
+				$loan_type = $ary['loan_type'];
 			}
 		}
 		

@@ -27,7 +27,7 @@
     	// output data of each row
 	?>
 		
-		<table class="w3-table w3-container w3-hoverable w3-bordered w3-middle w3-card-4" style="max-width:auto;width:100%;margin-top:50px; margin-bottom: 50px; font-family: Arial; ">
+		<table class="w3-table w3-container w3-bordered w3-middle w3-card-4" style="max-width:auto;width:100%;margin-top:50px; margin-bottom: 50px; font-family: Arial; ">
 
 			<thead>
 				<tr class="w3-teal">
@@ -41,6 +41,7 @@
 					<th> Present Address </th>
 					<th> Mail </th>
 					<th> Contact </th>
+					<th> Mode </th>
 				</tr>
 			</thead>
 	<?php
@@ -62,6 +63,7 @@
 				<td class="w3-button w3-aqua"> <?php echo $row['present_address']; ?> </td>
 				<td class="w3-button w3-khaki"> <?php echo $row['email']; ?> </td>
 				<td class="w3-button w3-pale-green"> <?php echo $row['contact']; ?> </td>
+				<td> <a href="chairman_customer_update.php"> Update </a> <a href="chairman_customer_delete.php"> Delete </a> </td>
 			</tr>
     	<?php 
 

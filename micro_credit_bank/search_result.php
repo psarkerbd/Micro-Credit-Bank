@@ -15,7 +15,9 @@
 					<th> Contact </th>
 					<th> Loan type </th>
 					<th> Interest(%) </th>
-					<th> Amount </th>
+					<th> Have to paid </th>
+					<th> Loan Validity </th>
+					<th> Loan Amount </th>
 					<th> Date </th>
 					<th> Status </th>
 				</tr>
@@ -37,14 +39,6 @@
 		{
 			while($row = mysql_fetch_assoc($result_sql))
 			{ 
-				$interest_rate = $row['interest_rate'];
-				$sql = "SELECT * FROM loan_amount WHERE rate = '$interest_rate' ";
-				$res = mysql_query($sql);
-				if(mysql_num_rows($res))
-				{
-					$ary = array();
-					$ary = mysql_fetch_array($res);
-				}
 		
 		?>
 
@@ -55,8 +49,10 @@
 					<td> <?php echo $row['mother_name']; ?> </td>
 					<td> <?php echo $row['contact']; ?> </td>
 					<td> <?php echo $row['loan_type']; ?> </td>
-					<td> <?php echo $row['interest_rate']; ?> </td>
-					<td> <?php echo $ary['amount']; ?> </td>
+					<td> <?php echo $row['interest']; ?> </td>
+					<td> <?php echo $row['total_paid']; ?> </td>
+					<td> <?php echo $row['validity']; ?> </td>
+					<td> <?php echo $row['loan_amount']; ?> </td>
 					<td> <?php echo $row['taken_date']; ?> </td>
 					<td> <?php echo $row['status']; ?> </td>
 				</tr>		
@@ -91,7 +87,7 @@
 
 	function get_accept()
 	{
-		window.location.href = "loan_form.php";
+		window.location.href = "loan_form.php?customer_nid="+<?php echo $customer_nid; ?>;
 	}
 
 
