@@ -34,8 +34,8 @@
 							
 							<div class="w3-dropdown-content w3-bar-block w3-card-4">
 								<a href="admin_detail.php" class="w3-bar-item w3-button w3-teal"> Admin </a>
-								<a href="customer_detail.php" class="w3-bar-item w3-button w3-teal"> Customer </a>
 								<a href="loan_detail.php" class="w3-bar-item w3-button w3-teal"> Loan </a>
+								<a href="pro_customer_detail.php" class="w3-bar-item w3-button w3-teal"> Customer </a>
 								<a href="customer_loan_detail.php" class="w3-bar-item w3-button w3-teal"> Customer Loan </a>
 							</div>
 
@@ -52,7 +52,7 @@
 	             	
 						</div>
 
-							<a href="home.php?logout=yes" class="w3-bar-item w3-button w3-wide w3-border w3-border-teal 				w3-round-large w3-margin-right" >  <label class="w3-tiny">  <?php echo $designation; ?> </label> Logout
+							<a href="home.php?logout=yes" class="w3-bar-item w3-button w3-wide w3-border w3-border-teal w3-round-large w3-margin-right" >  <label class="w3-tiny">  <?php echo $designation; ?> </label> Logout
 							</a>
 
 					</div>

@@ -28,7 +28,7 @@
 	  			
 						<a href="home.php" class="w3-bar-item w3-button w3-wide w3-border w3-border-teal w3-round-large w3-margin-right"> Home </a>
 
-						<a href="#" class="w3-bar-item w3-button w3-wide w3-border w3-border-teal w3-round-large w3-margin-right"> Payment </a>
+						<a href="payment.php" class="w3-bar-item w3-button w3-wide w3-border w3-border-teal w3-round-large w3-margin-right"> Payment </a>
 
 						<div class="w3-dropdown-hover">
 	             	

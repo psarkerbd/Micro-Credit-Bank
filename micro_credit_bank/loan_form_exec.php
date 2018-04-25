@@ -23,33 +23,44 @@
 	$result = mysql_query($sql);
 	if($result)
 	{
-		if(mysql_num_rows($result) > 0)
+		if(mysql_num_rows($result))
 		{
-			$bry = array();
-			$bry = mysql_fetch_assoc($result);
-			$loan_id = $bry['loan_id'] + 1;
+			$pre_cnt = 0;
+			
+			while($row=mysql_fetch_array($result))
+			{
+				$pre_cnt = $pre_cnt + 1;
+			}
 		}
 		
 		else
 		{
-			$loan_id = 1;
+			$pre_cnt = 1;
+			$loan_id = $pre_cnt;
 		}
+		
+		$loan_id = $pre_cnt+1;
+		
+		//echo " -- loan_id = " . $loan_id . " -- " ;
 	}
 	
 	if($loan_type_id > 0 && $loan_status_id > 0)
 	{
-		$sql = "SELECT * FROM loan_category WHERE category_id = '$loan_type_id'";
+		$sql = "SELECT * FROM loan_category WHERE category_id = '$loan_type_id' ";
 		$result = mysql_query($sql);
 		
 		if($result)
 		{
 			$cnt_table = mysql_num_rows($result);
 			
+			//echo "loan_type_id and loan_status_id > 0";
+			
 			if($cnt_table > 0)
 			{
 				$ary = array();
 				$ary = mysql_fetch_assoc($result);
 				$loan_type = $ary['loan_type'];
+				//echo "loan type = " . $loan_type;
 			}
 		}
 		
@@ -60,7 +71,7 @@
 		if($cnt_table > 0)
 		{
 			$ary = array();
-			$ary = mysql_fetch_array($result);
+			$ary = mysql_fetch_assoc($result);
 			//echo var_dump($ary);
 			$category_id = $ary['category_id'];
 			//echo "hello - " . $category_id;
@@ -79,7 +90,7 @@
 		
 		else
 		{
-			echo "Not added";
+			echo "Not added. Register as Customer first";
 		}
 	}
 

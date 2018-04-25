@@ -169,9 +169,8 @@
 		</form>
 				
 	</div>
-
-</div>
-
+	
+	
 <script>
 
 	function myFunction() 
@@ -247,6 +246,10 @@
 </script>
 <p class="w3-center w3-red w3-text-white" id="mmssgg" style="display:none; font-family: Arial;"></p>
 <p class="w3-center w3-green" id="confirm_msg" style="display: none"></p>
+
+
+</div>
+
 
 
 

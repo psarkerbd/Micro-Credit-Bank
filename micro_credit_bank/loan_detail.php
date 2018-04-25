@@ -40,10 +40,7 @@
 						<td> <?php echo $row['loan_amount']; ?> </td>
 						<td> <?php echo $row['interest']; ?> </td>
 						<td> <?php echo $row['total_paid'] ?> </td>
-						
-			
-
-						<td> <a href="loan_detail_exec.php?id=<?php echo $row['category_id']; ?>"> <button class="w3-button w3-black" onclick="remove_note()">Yes</button></a> </td>
+						<td> <a href="loan_delete.php?id=<?php echo $row['category_id']; ?>"> <button class="w3-button w3-black" onclick="remove_note()">Yes</button></a> </td>
 					</tr>
 		<?php			
 			} 
@@ -61,7 +58,7 @@
 	
 	function remove_note()
 	{
-		window.alert("An Admin deleted successfully");
+		window.alert("A Loan deleted successfully");
 	}
 
 </script>

@@ -36,3 +36,42 @@ $qry = "INSERT INTO loan(national_id, category_id, interest_rate, taken_date, st
 				</div>
 			
 			</div>
+			
+			
+			
+			
+$cnt_table = mysql_num_rows($result);
+		
+		if($cnt_table > 0)
+		{
+			$ary = array();
+			$ary = mysql_fetch_assoc($result);
+			
+			if($ary['category_id'] == $loan_type_id)
+			{
+				$sql = "INSERT INTO payment (loan_id, national_id, amount_paid, late_fine, payment_date) 
+				VALUES ('$loan_type_id', '$national_id', '$loan_amount', '0' , '$loan_date') ";
+				$result = mysql_query($result);
+				
+				if($result)
+				{
+					//header("Location: payment_detail.php");
+					echo "ok";
+				}
+				
+				else
+				{
+					echo "Not Paid yet";
+				}
+			}
+			
+			else
+			{
+				echo "User did not take this Loan.";
+			}
+		}
+		
+		else
+		{
+			echo "No fetch any rows";
+		}

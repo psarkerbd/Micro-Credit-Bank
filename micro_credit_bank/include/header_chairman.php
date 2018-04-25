@@ -33,7 +33,6 @@
 							<button class="w3-button w3-wide w3-border w3-border-teal w3-round-large w3-margin-right"> Edit </button>
 							
 							<div class="w3-dropdown-content w3-bar-block w3-card-4">
-								<a href="chairman_customer_detail.php" class="w3-bar-item w3-button w3-teal"> Customer </a>
 								<a href="add_admin.php" class="w3-bar-item w3-button w3-teal"> Add Admin </a>
 								<a href="edit_admin.php" class="w3-bar-item w3-button w3-teal"> Update Admin </a>
 								<a href="remove_admin.php" class="w3-bar-item w3-button w3-teal"> Remove Admin </a>
