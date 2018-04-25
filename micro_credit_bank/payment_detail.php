@@ -43,6 +43,17 @@
 			while($row = mysql_fetch_assoc($result_sql))
 			{ 
 		
+				if($row['due_amount'] == 0)
+				{
+					$status = "close";
+				}
+				
+				else
+				{
+					$status = $row['status'];
+				}
+				
+		
 		?>
 
 				<tr>
@@ -57,7 +68,7 @@
 					<td> <?php echo $row['amount_paid']; ?> </td>
 					<td> <?php echo $row['due_amount']; ?> </td>
 					<td> <?php echo $row['taken_date']; ?> </td>
-					<td> <?php echo $row['status']; ?> </td>
+					<td> <?php echo $status; ?> </td>
 				</tr>		
 	<?php	}
 	?>

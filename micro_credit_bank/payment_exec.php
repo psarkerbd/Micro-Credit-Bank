@@ -33,30 +33,54 @@
 			if($flag)
 			{
 				// insert into payment
-				//echo 'this nid is exist';
-				$qry = "SELECT * FROM loan_category WHERE category_id='$loan_type_id' ";
+				
+				$qry = "SELECT SUM(amount_paid) AS totalAmount FROM payment WHERE national_id='$national_id' AND loan_id='$loan_id' ";
+				
 				$result = mysql_query($qry);
 				
 				if($result)
 				{
-					//echo " -- 1 . true --- ";
+					$row = mysql_fetch_assoc($result); 
+					$sum = $row['totalAmount'];
 					
-					if(mysql_num_rows($result))
+					//echo "sum = " . $sum;
+					
+					$in_qry = "SELECT * FROM loan_category WHERE category_id='$loan_type_id' ";
+					
+					$in_result = mysql_query($in_qry);
+					
+					if($in_result)
 					{
-						//echo " -- 2 . true --- ";
+						$ary = mysql_fetch_assoc($in_result);
+						$total_paid = $ary['total_paid'];
 						
-						$ary = array();
-						$ary = mysql_fetch_assoc($result);
-						$due_amount = $ary['total_paid'] - $loan_amount;
+						if($sum)
+						{
+							$due_amount = $total_paid - ($sum + $loan_amount);
+							//echo " sum due = " . $due_amount;
+						}
 						
-						//echo " -- due amount = " . $due_amount;
-						
+						else
+						{
+							$due_amount = $total_paid - $loan_amount;
+							//echo " loan due = " . $due_amount;
+						}
+					}
+					
+					else
+					{
+						$ary = mysql_fetch_assoc($in_result);
+						$due_amount = $total_paid - $loan_amount;
+					}
+					
+					if($due_amount >= 0)
+					{
 						$sql = "INSERT INTO payment(national_id, amount_paid, due_amount, late_fine, payment_date, loan_id) 
-								VALUES ('$national_id', '$loan_amount', $due_amount, '0', '$loan_date', '$loan_id') ";
-									
-						$sql_result = mysql_query($sql);
-									
-						if($sql_result)
+						VALUES ('$national_id', '$loan_amount', $due_amount, '0', '$loan_date', '$loan_id') ";
+					
+						$result = mysql_query($sql);
+						
+						if($result)
 						{
 							echo "ok";
 						}
@@ -65,11 +89,47 @@
 							echo "Not added";
 						}
 					}
+					
+					else
+					{
+						echo "Your Payment is completed";
+					}
 				}
-				 
+				
 				else
 				{
-					echo "Not added";
+					$in_qry = "SELECT * FROM loan_category WHERE category_id='$loan_type_id' ";
+					$in_result = mysql_query($in_qry);
+					
+					if($in_result)
+					{
+						$ary = mysql_fetch_assoc($in_result);
+						$total_paid = $ary['total_paid'];
+						echo $total_paid;
+						$due_amount = $total_paid - $sum;
+						echo "  ----   " . $due_amount;
+					}
+					
+					else
+					{
+						$due_amount = $total_paid - $loan_amount;
+						echo $total_paid;
+						$due_amount = $total_paid - $sum;
+						echo "  ----   " . $due_amount;
+					}
+					
+					$sql = "INSERT INTO payment(national_id, amount_paid, due_amount, late_fine, payment_date, loan_id) 
+						VALUES ('$national_id', '$loan_amount', $due_amount, '0', '$loan_date', '$loan_id') ";
+					
+					$result = mysql_query($sql);
+					if($result)
+					{
+						echo "ok";
+					}
+					else
+					{
+						echo "Not added";
+					}
 				}
 			}
 			
