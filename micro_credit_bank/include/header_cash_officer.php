@@ -39,7 +39,6 @@
 								<a href="customer_detail.php" class="w3-bar-item w3-button w3-teal"> Customer </a>
 								<a href="loan_detail.php" class="w3-bar-item w3-button w3-teal"> Loan </a>
 								<a href="customer_loan_detail.php" class="w3-bar-item w3-button w3-teal"> Customer Loan </a>
-								<a href="payment_detail.php" class="w3-bar-item w3-button w3-teal"> Payment </a>
 							</div>
 
 						</div>

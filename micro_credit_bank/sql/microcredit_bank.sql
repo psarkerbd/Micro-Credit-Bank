@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2018 at 07:56 AM
+-- Generation Time: Apr 24, 2018 at 05:46 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -76,10 +76,9 @@ CREATE TABLE IF NOT EXISTS `customer` (
 
 INSERT INTO `customer` (`national_id`, `customer_name`, `father_name`, `mother_name`, `dob`, `gender`, `email`, `permanent_address`, `present_address`, `contact`) VALUES
 (1300, 'Rafique', 'Bodrul', 'Salma Akhter', '2018-03-26', 'Male', 'rafique@gmail.com', 'Barishal', 'Barishal', '+8801231231231'),
-(1400, 'Mina', 'Khaled', 'Sayma', '1988-02-23', 'Female', 'mina@yahoo.com', 'Barishal', 'Barishal', '+8801711899120'),
-(1500, 'Mahfuz', 'Khan', 'Shima', '1987-05-11', 'Male', 'mahfuz@gmail.com', 'Sylhet', 'Sylhet', '+8801832121201'),
-(1000210, 'Naima', 'Abu Jafar', 'Renu Khan', '1998-03-16', 'Female', 'naima@yahoo.com', 'Dhaka', 'Dhaka', '1711020323'),
-(19900712, 'Mr. Rahim Uddin', 'Mr. Karim Uddin', 'Mrs. Rabeya Uddin', '12 July 1990', 'Male', 'rahim@gmail.com', 'Sylhet Sadar, Sylhet', 'Sylhet Sadar, Sylhet', '+8801700000001');
+(1000210, 'Naima', 'Abu Jafar', 'Renu Khan', '1998-03-16', 'Female', 'naima@gmail.com', 'Sylhet', 'Sylhet', '+8801231231230'),
+(1231411, 'Karim Uddin', 'Rahim Uddin', 'Nur Banu', '2018-04-01', 'Male', 'karim@gmail.com', 'Sylhet', 'Sylhet', '+8801111111'),
+(19900712, 'Mr. Rahim Uddin', 'Mr. Karim Uddin', 'Mrs. Rabeya Uddin', '1990-07-12', 'Male', 'rahim@gmail.com', 'Sylhet Sadar, Sylhet', 'Sylhet Sadar, Sylhet', '+8801700000001');
 
 -- --------------------------------------------------------
 
@@ -100,13 +99,7 @@ CREATE TABLE IF NOT EXISTS `loan` (
 --
 
 INSERT INTO `loan` (`loan_id`, `national_id`, `category_id`, `taken_date`, `status`) VALUES
-(1, 1300, 17, '2018-01-29', 'running'),
-(2, 1300, 12, '2018-02-27', 'running'),
-(3, 1400, 14, '2018-02-06', 'running'),
-(4, 1000210, 18, '2018-03-16', 'running'),
-(5, 19900712, 13, '2018-04-01', 'running'),
-(6, 1400, 16, '2018-03-25', 'running'),
-(7, 1500, 18, '2018-03-21', 'running');
+(1, 1300, 1, '2018-04-16', 'running');
 
 -- --------------------------------------------------------
 
@@ -121,19 +114,18 @@ CREATE TABLE IF NOT EXISTS `loan_category` (
   `total_paid` int(11) NOT NULL,
   `validity` varchar(255) NOT NULL,
   `interest` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `loan_category`
 --
 
 INSERT INTO `loan_category` (`category_id`, `loan_type`, `loan_amount`, `total_paid`, `validity`, `interest`) VALUES
-(12, 'Crop Loan One', 10000, 10500, '1', 5),
-(13, 'Crop Loan Two', 15000, 15900, '1', 6),
-(14, 'Fishery Loan One ', 10000, 11000, '1', 10),
-(16, 'Handcraft Loan One ', 25000, 26000, '1', 4),
-(17, 'Farm Loan One ', 20000, 22000, '1', 10),
-(18, 'Poultry Farm One', 30000, 33000, '1', 10);
+(1, 'Crop production one', 10000, 12000, '1', 5),
+(2, 'Crop production two', 13000, 15000, '1', 5),
+(4, 'Fish culture', 20000, 25000, '1', 0),
+(5, 'Fish culture one', 5000, 7000, '1', 0),
+(11, 'Fish Culture 2', 10000, 10500, '1', 5);
 
 -- --------------------------------------------------------
 
@@ -142,31 +134,12 @@ INSERT INTO `loan_category` (`category_id`, `loan_type`, `loan_amount`, `total_p
 --
 
 CREATE TABLE IF NOT EXISTS `payment` (
-`payment_id` int(11) NOT NULL,
-  `national_id` int(11) NOT NULL DEFAULT '0',
+  `loan_id` int(11) NOT NULL,
+  `national_id` int(11) NOT NULL,
   `amount_paid` int(11) NOT NULL,
-  `due_amount` int(11) NOT NULL,
   `late_fine` int(11) NOT NULL,
-  `payment_date` varchar(255) NOT NULL,
-  `loan_id` int(11) DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `payment`
---
-
-INSERT INTO `payment` (`payment_id`, `national_id`, `amount_paid`, `due_amount`, `late_fine`, `payment_date`, `loan_id`) VALUES
-(45, 1400, 1000, 10000, 0, '2018-04-01', 3),
-(46, 1400, 1000, 9000, 0, '2018-04-01', 3),
-(47, 1400, 1000, 8000, 0, '2018-04-01', 3),
-(48, 1400, 1000, 7000, 0, '2018-04-01', 3),
-(49, 1400, 1000, 6000, 0, '2018-04-01', 3),
-(50, 1400, 1000, 5000, 0, '2018-04-01', 3),
-(51, 1400, 1000, 4000, 0, '2018-04-01', 3),
-(52, 1400, 1000, 3000, 0, '2018-04-01', 3),
-(53, 1400, 1000, 2000, 0, '2018-04-01', 3),
-(54, 1400, 1000, 1000, 0, '2018-04-01', 3),
-(55, 1400, 1000, 0, 0, '2018-04-01', 3);
+  `payment_date` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -200,7 +173,7 @@ ALTER TABLE `loan_category`
 -- Indexes for table `payment`
 --
 ALTER TABLE `payment`
- ADD PRIMARY KEY (`payment_id`), ADD KEY `national_id` (`national_id`), ADD KEY `payment_ibfk_2` (`loan_id`);
+ ADD PRIMARY KEY (`loan_id`,`national_id`), ADD KEY `national_id` (`national_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -210,12 +183,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `loan_category`
 --
 ALTER TABLE `loan_category`
-MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `payment`
---
-ALTER TABLE `payment`
-MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=56;
+MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- Constraints for dumped tables
 --
