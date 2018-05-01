@@ -8,5 +8,7 @@ Micro Credit Bank
   <li> This project allow you to edit, delete or modify the bank admins. By default this process belongs to Bank Chairman. If you want to change the designation you can do it on this software. </li>
 </ul>
 
+###Have a Tour
+
 ![screenshot_1](https://user-images.githubusercontent.com/13948564/39465603-0bb13720-4d46-11e8-8092-7b83db903c09.png)
 <center> <b> So, Chairman can edit his/her profile </b> </center>
