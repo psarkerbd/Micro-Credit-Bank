@@ -7,7 +7,7 @@ Micro Credit Bank
   <li> This project is available for all bank members. </li>
   <li> This project allow you to edit, delete or modify the bank admins. By default this process belongs to Bank Chairman. If you want to change the designation you can do it on this software. </li>
   <li> Any registered member can see the details of customer, loan customer, loan and admins. </li>
-  <li> Every user can edit his/her profile. </li>
+  <li> Every admin can edit his/her profile. </li>
   <li> By default a cash officer can pay the customer loan fee. </li>
   <li> By default Public Relationship Officer can update or delete any customer profile and apply for loan for a customer who wants to take a loan. </li>
   <li> By default any registered bank member can apply for a loan except the Chairman. </li>
