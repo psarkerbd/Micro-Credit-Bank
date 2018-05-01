@@ -14,7 +14,7 @@ Micro Credit Bank
   
 </ul>
 
-# Have a Tour
+# Have a Tour (Just a Demo)
 
 <b> 1. </b> **Admin Login page. This is the first page of this software.**
 
